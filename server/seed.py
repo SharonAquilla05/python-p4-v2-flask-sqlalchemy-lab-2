@@ -4,7 +4,6 @@ from app import app
 from models import db, Customer, Review, Item
 
 with app.app_context():
-
     Customer.query.delete()
     Review.query.delete()
     Item.query.delete()
@@ -32,3 +31,6 @@ with app.app_context():
     db.session.add(Review(comment="cable too short",
                    customer=customer3, item=item3))
     db.session.commit()
+
+    # Example of using the items association proxy
+    print(customer1.items)  # Output items reviewed by customer1
